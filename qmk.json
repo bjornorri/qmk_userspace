@@ -2,7 +2,8 @@
     "userspace_version": "1.0",
     "build_targets": [
         ["gmmk/pro/rev1/ansi", "bjornorri"],
-        ["gmmk/pro/rev1/ansi", "default_via"]
+        ["gmmk/pro/rev1/ansi", "default_via"],
+        ["keychron/q1_pro/ansi_knob", "bjornorri"],
+        ["keychron/q1_pro/ansi_knob", "default_via"]
     ]
 }
-
