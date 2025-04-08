@@ -4,6 +4,8 @@
         ["gmmk/pro/rev1/ansi", "bjornorri"],
         ["gmmk/pro/rev1/ansi", "default_via"],
         ["keychron/q1_pro/ansi_knob", "bjornorri"],
-        ["keychron/q1_pro/ansi_knob", "default_via"]
+        ["keychron/q1_pro/ansi_knob", "default_via"],
+        ["keychron/q1_max/ansi_encoder", "bjornorri"]
     ]
 }
+
