@@ -22,7 +22,8 @@
 #define MY_ENT MT(MOD_HYPR, KC_ENT)
 #define MY_TRGR G(KC_BSLS)
 #define MY_LBRC LSG(KC_LBRC)
-#define MY_RBRC RSG(KC_RBRC)
+#define MY_RBRC LSG(KC_RBRC)
+#define MY_BSLS LSG(KC_T)
 
 // Hyper modified keys.
 #define HP_ENT HYPR(KC_ENT)
@@ -46,7 +47,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [1] = LAYOUT_ansi_82(
         KC_CAPS,  KC_BRID,  KC_BRIU,  KC_MCTL,  KC_LPAD,  RGB_VAD,  RGB_VAI,  KC_MPRV,  KC_MPLY,  KC_MNXT,  KC_MUTE,  KC_VOLD,  KC_VOLU,  KC_TRNS,            KC_TRNS,
         KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,            KC_TRNS,
-        KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  MY_LBRC,  MY_RBRC,  KC_TRNS,            KC_TRNS,
+        KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  MY_LBRC,  MY_RBRC,  MY_BSLS,            KC_TRNS,
         KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_LEFT,  KC_DOWN,  KC_UP,    KC_RGHT,  KC_TRNS,  KC_TRNS,            HP_ENT,             KC_TRNS,
         KC_TRNS,            KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  HP_M,     KC_TRNS,  KC_TRNS,  KC_TRNS,            KC_TRNS,  HP_UP,
         KC_TRNS,  KC_TRNS,  KC_TRNS,                                HP_SPC,                                 KC_TRNS,  KC_TRNS,  KC_TRNS,  HP_LEFT,  HP_DOWN,  HP_RGHT),
