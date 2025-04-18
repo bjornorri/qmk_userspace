@@ -18,10 +18,6 @@
 #include "keychron_common.h"
 #include "bjornorri.h"
 
-
-// clang-format off
-
-
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [0] = LAYER_0_ANSI_82,
     [1] = LAYER_1_ANSI_82,
@@ -38,7 +34,6 @@ const uint16_t PROGMEM encoder_map[][NUM_ENCODERS][2] = {
 };
 #endif // ENCODER_MAP_ENABLE
 
-// clang-format on
 bool get_hold_on_other_key_press(uint16_t keycode, keyrecord_t *record) {
     return get_hold_on_other_key_press_bjornorri(keycode, record);
 }
