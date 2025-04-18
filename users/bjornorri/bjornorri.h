@@ -1,3 +1,5 @@
+#pragma once
+
 #define MY_ESC C(G(KC_Q))
 #define MY_ESC C(G(KC_Q))
 #define MY_CAPS LT(1, KC_ESC)
