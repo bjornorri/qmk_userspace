@@ -12,5 +12,11 @@ ifeq ($(QMK_FIRMWARE_ROOT),)
     $(error Cannot determine qmk_firmware location. `qmk config -ro user.qmk_home` is not set)
 endif
 
+# Custom target to build all keyboards
+all:
+	+$(MAKE) -C $(QMK_FIRMWARE_ROOT) keychron/q1_max/ansi_encoder:bjornorri QMK_USERSPACE=$(QMK_USERSPACE)
+	+$(MAKE) -C $(QMK_FIRMWARE_ROOT) keychron/q1_pro/ansi_knob:bjornorri QMK_USERSPACE=$(QMK_USERSPACE)
+
+# Generic passthrough
 %:
 	+$(MAKE) -C $(QMK_FIRMWARE_ROOT) $(MAKECMDGOALS) QMK_USERSPACE=$(QMK_USERSPACE)
