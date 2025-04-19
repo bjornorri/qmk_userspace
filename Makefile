@@ -23,3 +23,5 @@ all: max pro
 # Generic passthrough
 %:
 	+$(MAKE) -C $(QMK_FIRMWARE_ROOT) $(MAKECMDGOALS) QMK_USERSPACE=$(QMK_USERSPACE)
+
+.PHONY: all max pro
