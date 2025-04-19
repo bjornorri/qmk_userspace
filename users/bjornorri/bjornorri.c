@@ -1,8 +1,26 @@
+#include QMK_KEYBOARD_H
 #include "bjornorri.h"
+#include "actions.h"
+#include "tap_hold.h"
+
+#ifdef KEYCHRON_COMMON
+#    include "keychron_common.h"
+#endif
+
+// clang-format off
+#ifdef NEW_SAFE_RANGE
+#define MY_SAFE_RANGE NEW_SAFE_RANGE
+#else
+#define MY_SAFE_RANGE SAFE_RANGE
+#endif
+// clang-format on
+
+// Custom keycodes for complex functionality.
+enum custom_keycodes { MY_ESC = MY_SAFE_RANGE };
 
 // Layer 0 customizations.
 // ========================
-#define L0_ESC C(G(KC_Q))
+#define L0_ESC MY_ESC
 #define L0_CAPS LT(1, KC_ESC)
 #define L0_ENT MT(MOD_LSFT, KC_ENT)
 #define L0_SCLN MT(MOD_HYPR, KC_SCLN)
@@ -84,11 +102,22 @@ bool get_hold_on_other_key_press(uint16_t keycode, keyrecord_t *record) {
     return false;
 }
 
+void keyboard_post_init_user(void) {
+    tap_hold_register_key(MY_ESC, action_tap_esc, action_lock_mac);
+}
+
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 #ifdef KEYCHRON_COMMON
     if (!process_record_keychron_common(keycode, record)) {
         return false;
     }
 #endif
+    if (!tap_hold_process_record(keycode, record)) {
+        return false;
+    }
     return true;
+}
+
+void matrix_scan_user(void) {
+    tap_hold_matrix_scan();
 }
