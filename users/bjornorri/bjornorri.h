@@ -1,5 +1,13 @@
 #pragma once
 
+#include QMK_KEYBOARD_H
+
+// clang-format off
+#ifdef KEYCHRON_COMMON
+#include "keychron_common.h"
+#endif
+// clang-format on
+
 // Layer 0 customizations.
 // ========================
 #define L0_ESC C(G(KC_Q))
@@ -71,7 +79,18 @@
 #define LAYER_2_ENCODER {ENCODER_CCW_CW(KC_VOLD, KC_VOLU)}
 #define LAYER_3_ENCODER {ENCODER_CCW_CW(RGB_VAD, RGB_VAI)}
 
-bool get_hold_on_other_key_press_bjornorri(uint16_t keycode, keyrecord_t *record) {
+const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
+    [0] = LAYER_0_ANSI_82,
+    [1] = LAYER_1_ANSI_82,
+    [2] = LAYER_2_ANSI_82,
+    [3] = LAYER_3_ANSI_82,
+};
+
+#if defined(ENCODER_MAP_ENABLE)
+const uint16_t PROGMEM encoder_map[][NUM_ENCODERS][2] = {[0] = LAYER_0_ENCODER, [1] = LAYER_1_ENCODER, [2] = LAYER_2_ENCODER, [3] = LAYER_3_ENCODER};
+#endif // ENCODER_MAP_ENABLE
+
+bool get_hold_on_other_key_press(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
         case L0_CAPS:
             return true;
@@ -87,6 +106,11 @@ bool get_hold_on_other_key_press_bjornorri(uint16_t keycode, keyrecord_t *record
     return false;
 }
 
-bool process_record_bjornorri(uint16_t keycode, keyrecord_t *record) {
+bool process_record_user(uint16_t keycode, keyrecord_t *record) {
+#ifdef KEYCHRON_COMMON
+    if (!process_record_keychron_common(keycode, record)) {
+        return false;
+    }
+#endif
     return true;
 }

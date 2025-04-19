@@ -14,29 +14,4 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include QMK_KEYBOARD_H
 #include "bjornorri.h"
-
-const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
-    [0] = LAYER_0_ANSI_82,
-    [1] = LAYER_1_ANSI_82,
-    [2] = LAYER_2_ANSI_82,
-    [3] = LAYER_3_ANSI_82,
-};
-
-#if defined(ENCODER_MAP_ENABLE)
-const uint16_t PROGMEM encoder_map[][NUM_ENCODERS][2] = {
-    [0] = LAYER_0_ENCODER,
-    [1] = LAYER_1_ENCODER,
-    [2] = LAYER_2_ENCODER,
-    [3] = LAYER_3_ENCODER
-};
-#endif // ENCODER_MAP_ENABLE
-
-bool get_hold_on_other_key_press(uint16_t keycode, keyrecord_t *record) {
-    return get_hold_on_other_key_press_bjornorri(keycode, record);
-}
-
-bool process_record_user(uint16_t keycode, keyrecord_t *record) {
-    return process_record_bjornorri(keycode, record);
-}
