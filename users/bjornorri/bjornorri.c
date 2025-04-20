@@ -39,6 +39,8 @@ enum custom_keycodes {
 #define L1_LBRC LSG(KC_LBRC)
 #define L1_RBRC LSG(KC_RBRC)
 #define L1_BSLS LSG(KC_T)
+#define L1_COMM C(S(KC_PGUP))
+#define L1_DOT C(S(KC_PGDN))
 
 // Hyper on layer 1.
 #define L1_ENT HYPR(KC_ENT)
@@ -63,7 +65,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,            KC_TRNS,
         KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  L1_LBRC,  L1_RBRC,  L1_BSLS,            KC_TRNS,
         KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_LEFT,  KC_DOWN,  KC_UP,    KC_RGHT,  KC_TRNS,  KC_TRNS,            L1_ENT,             KC_TRNS,
-        KC_TRNS,            KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  L1_M,     KC_TRNS,  KC_TRNS,  KC_TRNS,            KC_TRNS,  L1_UP,
+        KC_TRNS,            KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  L1_M,     L1_COMM,  L1_DOT,   KC_TRNS,            KC_TRNS,  L1_UP,
         KC_TRNS,  KC_TRNS,  KC_TRNS,                                L1_SPC,                                 KC_TRNS,  KC_TRNS,  KC_TRNS,  L1_LEFT,  L1_DOWN,  L1_RGHT),
     [2] = LAYOUT_ansi_82(
         KC_TRNS,  KC_BRID,  KC_BRIU,  KC_MCTL,  KC_LPAD,  RGB_VAD,  RGB_VAI,  KC_MPRV,  KC_MPLY,  KC_MNXT,  KC_MUTE,  KC_VOLD,  KC_VOLU,  KC_TRNS,            KC_TRNS,
