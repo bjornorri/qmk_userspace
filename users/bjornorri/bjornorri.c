@@ -1,7 +1,7 @@
 #include QMK_KEYBOARD_H
 #include "bjornorri.h"
 #include "actions.h"
-#include "tap_hold.h"
+#include "tap_hold_action.h"
 #include "tap_hold_modkey.h"
 
 #ifdef KEYCHRON_COMMON
@@ -112,8 +112,8 @@ bool get_hold_on_other_key_press(uint16_t keycode, keyrecord_t *record) {
 
 void keyboard_post_init_user(void) {
     tap_hold_modkey_register(MY_TAB, KC_TAB, KC_LCTL);
-    tap_hold_register_key(MY_ESC, action_tap_esc, action_lock_mac);
-    tap_hold_register_key(MY_MPLY, action_none, action_play_pause);
+    tap_hold_action_register_key(MY_ESC, action_tap_esc, action_lock_mac);
+    tap_hold_action_register_key(MY_MPLY, action_none, action_play_pause);
 }
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
@@ -125,7 +125,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     if (!tap_hold_modkey_process_record(keycode, record)) {
         return false;
     }
-    if (!tap_hold_process_record(keycode, record)) {
+    if (!tap_hold_action_process_record(keycode, record)) {
         return false;
     }
     return true;
@@ -133,5 +133,5 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
 void matrix_scan_user(void) {
     tap_hold_modkey_matrix_scan();
-    tap_hold_matrix_scan();
+    tap_hold_action_matrix_scan();
 }
