@@ -2,6 +2,7 @@
 #include "bjornorri.h"
 #include "actions.h"
 #include "tap_hold.h"
+#include "tap_hold_modkey.h"
 
 #ifdef KEYCHRON_COMMON
 #    include "keychron_common.h"
@@ -18,7 +19,8 @@
 // Custom keycodes for complex functionality.
 enum custom_keycodes {
     MY_ESC = MY_SAFE_RANGE,
-    MY_MPLY // Media play/pause.
+    MY_MPLY, // Media play/pause.
+    MY_TAB
 };
 
 // Layer 0 customizations.
@@ -27,12 +29,12 @@ enum custom_keycodes {
 #define L0_ENT MT(MOD_LSFT, KC_ENT)
 #define L0_SCLN MT(MOD_HYPR, KC_SCLN)
 #define L0_SLSH MT(MOD_RCTL, KC_SLSH)
-#define L0_TAB MT(MOD_LCTL, KC_TAB)
 #define L0_TRGR G(KC_BSLS)
 
 // Custom keycodes.
 #define L0_ESC MY_ESC
 #define L0_MPLY MY_MPLY
+#define L0_TAB MY_TAB
 
 // Layer 1 customizations.
 // ========================
@@ -100,8 +102,6 @@ bool get_hold_on_other_key_press(uint16_t keycode, keyrecord_t *record) {
             return true;
         case L0_ENT:
             return true;
-        case L0_TAB:
-            return true;
         case L0_SCLN:
             return true;
         case L0_SLSH:
@@ -111,6 +111,7 @@ bool get_hold_on_other_key_press(uint16_t keycode, keyrecord_t *record) {
 }
 
 void keyboard_post_init_user(void) {
+    tap_hold_modkey_register(MY_TAB, KC_TAB, KC_LCTL);
     tap_hold_register_key(MY_ESC, action_tap_esc, action_lock_mac);
     tap_hold_register_key(MY_MPLY, action_none, action_play_pause);
 }
@@ -121,6 +122,9 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         return false;
     }
 #endif
+    if (!tap_hold_modkey_process_record(keycode, record)) {
+        return false;
+    }
     if (!tap_hold_process_record(keycode, record)) {
         return false;
     }
@@ -128,5 +132,6 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 }
 
 void matrix_scan_user(void) {
+    tap_hold_modkey_matrix_scan();
     tap_hold_matrix_scan();
 }
