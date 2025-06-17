@@ -17,11 +17,7 @@
 // clang-format on
 
 // Custom keycodes for complex functionality.
-enum custom_keycodes {
-    MY_ESC = MY_SAFE_RANGE,
-    MY_MPLY, // Media play/pause.
-    MY_TAB
-};
+enum custom_keycodes { MY_ESC = MY_SAFE_RANGE, MY_TAB };
 
 // Layer 0 customizations.
 // ========================
@@ -33,7 +29,6 @@ enum custom_keycodes {
 
 // Custom keycodes.
 #define L0_ESC MY_ESC
-#define L0_MPLY MY_MPLY
 #define L0_TAB MY_TAB
 
 // Layer 1 customizations.
@@ -56,7 +51,7 @@ enum custom_keycodes {
 // clang-format off
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [0] = LAYOUT_ansi_82(
-        L0_ESC,   KC_F1,    KC_F2,    KC_F3,    KC_F4,    KC_F5,    KC_F6,    KC_F7,    KC_F8,    KC_F9,    KC_F10,   KC_F11,   KC_F12,   L0_MPLY,            KC_MUTE,
+        L0_ESC,   KC_F1,    KC_F2,    KC_F3,    KC_F4,    KC_F5,    KC_F6,    KC_F7,    KC_F8,    KC_F9,    KC_F10,   KC_F11,   KC_F12,   KC_MPLY,            KC_MUTE,
         KC_GRV,   KC_1,     KC_2,     KC_3,     KC_4,     KC_5,     KC_6,     KC_7,     KC_8,     KC_9,     KC_0,     KC_MINS,  KC_EQL,   KC_BSPC,            KC_PGUP,
         L0_TAB,   KC_Q,     KC_W,     KC_E,     KC_R,     KC_T,     KC_Y,     KC_U,     KC_I,     KC_O,     KC_P,     KC_LBRC,  KC_RBRC,  KC_BSLS,            KC_PGDN,
         L0_CAPS,  KC_A,     KC_S,     KC_D,     KC_F,     KC_G,     KC_H,     KC_J,     KC_K,     KC_L,     L0_SCLN,  KC_QUOT,            L0_ENT,             L0_TRGR,
@@ -113,7 +108,6 @@ bool get_hold_on_other_key_press(uint16_t keycode, keyrecord_t *record) {
 void keyboard_post_init_user(void) {
     tap_hold_modkey_register(MY_TAB, KC_TAB, KC_LCTL);
     tap_hold_action_register_key(MY_ESC, action_tap_esc, action_lock_mac);
-    tap_hold_action_register_key(MY_MPLY, action_none, action_play_pause);
 }
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
