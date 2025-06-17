@@ -98,12 +98,6 @@ bool get_hold_on_other_key_press(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
         case L0_CAPS:
             return true;
-        case L0_ENT:
-            return true;
-        case L0_SCLN:
-            return true;
-        case L0_SLSH:
-            return true;
     }
     return false;
 }
