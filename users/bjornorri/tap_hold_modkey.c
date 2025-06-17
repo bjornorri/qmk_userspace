@@ -5,7 +5,7 @@
 typedef struct {
     uint16_t keycode;
     uint16_t tap_key;
-    uint8_t  mod;
+    uint8_t  mod_mask; // supports multiple mods now
     bool     active;
     bool     mod_sent;
     bool     force_tap;
@@ -15,9 +15,9 @@ typedef struct {
 static tap_hold_modkey_key_t tap_hold_modkey_keys[MAX_tap_hold_modkey_KEYS];
 static uint8_t               tap_hold_modkey_count = 0;
 
-void tap_hold_modkey_register(uint16_t keycode, uint16_t tap_key, uint8_t mod) {
+void tap_hold_modkey_register(uint16_t keycode, uint16_t tap_key, uint8_t mod_mask) {
     if (tap_hold_modkey_count < MAX_tap_hold_modkey_KEYS) {
-        tap_hold_modkey_keys[tap_hold_modkey_count++] = (tap_hold_modkey_key_t){.keycode = keycode, .tap_key = tap_key, .mod = mod, .active = false, .mod_sent = false, .force_tap = false, .timer = 0};
+        tap_hold_modkey_keys[tap_hold_modkey_count++] = (tap_hold_modkey_key_t){.keycode = keycode, .tap_key = tap_key, .mod_mask = mod_mask, .active = false, .mod_sent = false, .force_tap = false, .timer = 0};
     }
 }
 
@@ -39,7 +39,8 @@ bool tap_hold_modkey_process_record(uint16_t keycode, keyrecord_t *record) {
                 }
             } else {
                 if (k->mod_sent) {
-                    unregister_mods(MOD_BIT(k->mod));
+                    unregister_mods(k->mod_mask);
+                    send_keyboard_report();
                 } else if (!k->force_tap) {
                     tap_code(k->tap_key);
                 }
@@ -50,7 +51,8 @@ bool tap_hold_modkey_process_record(uint16_t keycode, keyrecord_t *record) {
 
         // If this key is active and another key is pressed, register mod immediately
         if (k->active && record->event.pressed && keycode != k->keycode && !k->mod_sent) {
-            register_mods(MOD_BIT(k->mod));
+            register_mods(k->mod_mask);
+            send_keyboard_report();
             k->mod_sent = true;
         }
     }
@@ -62,7 +64,8 @@ void tap_hold_modkey_matrix_scan(void) {
     for (uint8_t i = 0; i < tap_hold_modkey_count; i++) {
         tap_hold_modkey_key_t *k = &tap_hold_modkey_keys[i];
         if (k->active && !k->mod_sent && !k->force_tap && timer_elapsed(k->timer) > TAPPING_TERM) {
-            register_mods(MOD_BIT(k->mod));
+            register_mods(k->mod_mask);
+            send_keyboard_report();
             k->mod_sent = true;
         }
     }

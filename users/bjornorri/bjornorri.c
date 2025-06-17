@@ -17,19 +17,22 @@
 // clang-format on
 
 // Custom keycodes for complex functionality.
-enum custom_keycodes { MY_ESC = MY_SAFE_RANGE, MY_TAB };
+enum custom_keycodes { MY_ESC = MY_SAFE_RANGE, MY_TAB, MY_SCLN };
+
+// Hyper modifier mask.
+#define MOD_MASK_HYPR MOD_MASK_CTRL | MOD_MASK_SHIFT | MOD_MASK_ALT | MOD_MASK_GUI
 
 // Layer 0 customizations.
 // ========================
 #define L0_CAPS LT(1, KC_ESC)
 #define L0_ENT MT(MOD_LSFT, KC_ENT)
-#define L0_SCLN MT(MOD_HYPR, KC_SCLN)
 #define L0_SLSH MT(MOD_RCTL, KC_SLSH)
 #define L0_TRGR G(KC_BSLS)
 
 // Custom keycodes.
 #define L0_ESC MY_ESC
 #define L0_TAB MY_TAB
+#define L0_SCLN MY_SCLN
 
 // Layer 1 customizations.
 // ========================
@@ -106,7 +109,8 @@ bool get_hold_on_other_key_press(uint16_t keycode, keyrecord_t *record) {
 }
 
 void keyboard_post_init_user(void) {
-    tap_hold_modkey_register(MY_TAB, KC_TAB, KC_LCTL);
+    tap_hold_modkey_register(MY_TAB, KC_TAB, MOD_MASK_CTRL);
+    tap_hold_modkey_register(MY_SCLN, KC_SCLN, MOD_MASK_HYPR);
     tap_hold_action_register_key(MY_ESC, action_tap_esc, action_lock_mac);
 }
 
