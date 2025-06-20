@@ -23,6 +23,24 @@ void tap_hold_modkey_register(uint16_t keycode, uint16_t tap_key, uint8_t mod_ma
 }
 
 bool tap_hold_modkey_process_record(uint16_t keycode, keyrecord_t *record) {
+    // First update any active keys before handling the new key. This ensures
+    // that held modifiers are applied before the current key press is sent.
+    for (uint8_t i = 0; i < tap_hold_modkey_count; i++) {
+        tap_hold_modkey_key_t *k = &tap_hold_modkey_keys[i];
+
+        if (k->active && record->event.pressed && keycode != k->keycode && !k->mod_sent) {
+            register_mods(k->mod_mask);
+            send_keyboard_report();
+            k->mod_sent = true;
+
+            if (k->tap_key_down) {
+                unregister_code(k->tap_key);
+                send_keyboard_report();
+                k->tap_key_down = false;
+            }
+        }
+    }
+
     for (uint8_t i = 0; i < tap_hold_modkey_count; i++) {
         tap_hold_modkey_key_t *k = &tap_hold_modkey_keys[i];
 
@@ -56,20 +74,6 @@ bool tap_hold_modkey_process_record(uint16_t keycode, keyrecord_t *record) {
                 k->tap_key_down = false;
             }
             return false;
-        }
-
-        // Any other key triggers hold behavior
-        if (k->active && record->event.pressed && keycode != k->keycode && !k->mod_sent) {
-            register_mods(k->mod_mask);
-            send_keyboard_report();
-            k->mod_sent = true;
-
-            // If we previously registered tap key, unregister it
-            if (k->tap_key_down) {
-                unregister_code(k->tap_key);
-                send_keyboard_report();
-                k->tap_key_down = false;
-            }
         }
     }
 

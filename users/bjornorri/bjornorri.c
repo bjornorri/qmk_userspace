@@ -102,8 +102,8 @@ bool get_hold_on_other_key_press(uint16_t keycode, keyrecord_t *record) {
 }
 
 void keyboard_post_init_user(void) {
-    tap_hold_modkey_register(MY_TAB, KC_TAB, MOD_MASK_CTRL);
     tap_hold_modkey_register(MY_SCLN, KC_SCLN, MOD_MASK_HYPR);
+    tap_hold_modkey_register(MY_TAB, KC_TAB, MOD_MASK_CTRL);
     tap_hold_action_register_key(MY_ESC, action_tap_esc, action_lock_mac);
 }
 
