@@ -10,7 +10,6 @@ void tap_hold_action_register_key(uint16_t keycode, action_fn_t on_tap, action_f
     }
 }
 
-
 bool tap_hold_action_process_record(uint16_t keycode, keyrecord_t *record) {
     for (uint8_t i = 0; i < key_count; i++) {
         if (keys[i].keycode == keycode) {
