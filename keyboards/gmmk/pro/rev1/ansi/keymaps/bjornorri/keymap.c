@@ -42,6 +42,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define L1_F10 HYPR(KC_F10)
 #define L1_F11 HYPR(KC_F11)
 #define L1_F12 HYPR(KC_F12)
+#define L1_F13 HYPR(KC_F13)
 // Number row.
 #define L1_GRV HYPR(KC_GRV)
 #define L1_1 HYPR(KC_1)
@@ -106,7 +107,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [0] = LAYOUT(
         L0_ESC,   KC_F1,    KC_F2,    KC_F3,    KC_F4,    KC_F5,    KC_F6,    KC_F7,    KC_F8,    KC_F9,    KC_F10,   KC_F11,   KC_F12,   KC_MPLY,            KC_MUTE,
-        KC_GRV,   KC_1,     KC_2,     KC_3,     KC_4,     KC_5,     KC_6,     KC_7,     KC_8,     KC_9,     KC_0,     KC_MINS,  KC_EQL,   KC_BSPC,            KC_NO,
+        KC_GRV,   KC_1,     KC_2,     KC_3,     KC_4,     KC_5,     KC_6,     KC_7,     KC_8,     KC_9,     KC_0,     KC_MINS,  KC_EQL,   KC_BSPC,            KC_F13,
         KC_TAB,   KC_Q,     KC_W,     KC_E,     KC_R,     KC_T,     KC_Y,     KC_U,     KC_I,     KC_O,     KC_P,     KC_LBRC,  KC_RBRC,  KC_BSLS,            KC_PGUP,
         MY_CAPS,  KC_A,     KC_S,     KC_D,     KC_F,     KC_G,     KC_H,     KC_J,     KC_K,     KC_L,     KC_SCLN,  KC_QUOT,            MY_ENT,             KC_PGDN,
         KC_LSFT,            KC_Z,     KC_X,     KC_C,     KC_V,     KC_B,     KC_N,     KC_M,     KC_COMM,  KC_DOT,   KC_SLSH,            KC_RSFT,  KC_UP,    MY_TRGR,
@@ -114,7 +115,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
     [1] = LAYOUT(
         L1_ESC,   L1_F1,    L1_F2,    L1_F3,    L1_F4,    L1_F5,    L1_F6,    L1_F7,    L1_F8,    L1_F9,    L1_F10,   L1_F11,   L1_F12,   KC_TRNS,            KC_TRNS,
-        L1_GRV,   L1_1,     L1_2,     L1_3,     L1_4,     L1_5,     L1_6,     L1_7,     L1_8,     L1_9,     L1_0,     L1_MINS,  L1_EQL,   L1_BSPC,            KC_TRNS,
+        L1_GRV,   L1_1,     L1_2,     L1_3,     L1_4,     L1_5,     L1_6,     L1_7,     L1_8,     L1_9,     L1_0,     L1_MINS,  L1_EQL,   L1_BSPC,            L1_F13,
         L1_TAB,   L1_Q,     L1_W,     L1_E,     L1_R,     L1_T,     L1_Y,     L1_U,     L1_I,     L1_O,     L1_P,     MY_LBRC,  MY_RBRC,  KC_TRNS,            L1_PGUP,
         KC_TRNS,  L1_A,     L1_S,     L1_D,     L1_F,     L1_G,     L1_H,     L1_J,     L1_K,     L1_L,     L1_SCLN,  L1_QUOT,            L1_ENT,             L1_PGDN,
         KC_TRNS,            L1_Z,     L1_X,     L1_C,     L1_V,     L1_B,     L1_N,     L1_M,     L1_COMM,  L1_DOT,   L1_SLSH,            KC_TRNS,  L1_UP,    KC_TRNS,
