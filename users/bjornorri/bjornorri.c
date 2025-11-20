@@ -82,7 +82,7 @@ enum custom_keycodes { MY_ESC = MY_SAFE_RANGE, MY_TAB, MY_SCLN, MY_MPLY };
 #define L1_RBRC LSG(KC_RBRC)
 #define L1_BSLS LSG(KC_T)
 // A row.
-#define L1_A HYPR(KC_A)
+#define L1_A LCTL(KC_A)
 #define L1_S HYPR(KC_S)
 #define L1_D HYPR(KC_D)
 #define L1_F HYPR(KC_F)

@@ -27,7 +27,8 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define MY_LBRC LSG(KC_LBRC)
 #define MY_RBRC LSG(KC_RBRC)
 
-// Hyper modified keys for layer 1.
+// Layer 1 customizations.
+// ========================
 // Function row.
 #define L1_ESC HYPR(KC_ESC)
 #define L1_F1 HYPR(KC_F1)
@@ -58,7 +59,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define L1_MINS HYPR(KC_MINS)
 #define L1_EQL HYPR(KC_EQL)
 #define L1_BSPC HYPR(KC_BSPC)
-// Top row.
+// Q row.
 #define L1_TAB HYPR(KC_TAB)
 #define L1_Q HYPR(KC_Q)
 #define L1_W HYPR(KC_W)
@@ -70,8 +71,11 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define L1_I HYPR(KC_I)
 #define L1_O HYPR(KC_O)
 #define L1_P HYPR(KC_P)
-// Home row.
-#define L1_A HYPR(KC_A)
+#define L1_LBRC LSG(KC_LBRC)
+#define L1_RBRC LSG(KC_RBRC)
+#define L1_BSLS LSG(KC_T)
+// A row.
+#define L1_A LCTL(KC_A)
 #define L1_S HYPR(KC_S)
 #define L1_D HYPR(KC_D)
 #define L1_F HYPR(KC_F)
@@ -83,7 +87,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define L1_SCLN HYPR(KC_SCLN)
 #define L1_QUOT HYPR(KC_QUOT)
 #define L1_ENT HYPR(KC_ENT)
-// Bottom row.
+// Z row.
 #define L1_Z HYPR(KC_Z)
 #define L1_X HYPR(KC_X)
 #define L1_C HYPR(KC_C)
@@ -91,16 +95,18 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define L1_B HYPR(KC_B)
 #define L1_N HYPR(KC_N)
 #define L1_M HYPR(KC_M)
-#define L1_COMM HYPR(KC_COMM)
-#define L1_DOT HYPR(KC_DOT)
+#define L1_COMM C(S(KC_PGUP))
+#define L1_DOT C(S(KC_PGDN))
 #define L1_SLSH HYPR(KC_SLSH)
-// Space and navigation.
+// Space row.
 #define L1_SPC HYPR(KC_SPC)
+// Navigation cluster.
 #define L1_PGUP HYPR(KC_PGUP)
 #define L1_PGDN HYPR(KC_PGDN)
-#define L1_UP HYPR(KC_UP)
+// Arrow keys.
 #define L1_LEFT HYPR(KC_LEFT)
 #define L1_DOWN HYPR(KC_DOWN)
+#define L1_UP HYPR(KC_UP)
 #define L1_RGHT HYPR(KC_RGHT)
 
 // clang-format off
